@@ -1,0 +1,79 @@
+<div class="main-content">
+
+    <div class="section-content section-conetent-p30">
+
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div *ngFor="let product of products" class="col-md-3">
+
+
+                    <div class="product-box">
+
+                        <a routerLink="/products/{{product.id}}" routerLinkActive="active-link">
+                            <img src="{{product.imageUrl}}" alt="test" class="img-responsive">
+                        </a>
+
+                        <a routerLink="/products/{{product.id}}" routerLinkActive="active-link">
+                            <h6>{{product.name}}</h6>
+                        </a>
+                        <div class="price">{{product.unitPrice | currency :'USD'}} </div>
+                        <button class="btn btn-primary btn-sm"  (click) ="addProductToCart(product)"> Add to cart</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div *ngIf="products?.length==0" class="alert alert-warning col-md-12" role="alert">
+                No Products Found ! </div>
+
+            <!-- pagination start-->
+
+
+            <div class="footer-pagination">
+                <div class="row">
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+
+                            <div class="col-md-9" style="padding-left:30%">
+
+                            <ngb-pagination [(page)]="thePageNumber" 
+                                            [pageSize]="thePageSize"
+                                            [collectionSize]="theTotalElements"
+                                            (pageChange)="listProducts()"
+                          
+                                            [maxSize]="5"
+                                            >
+  <!-- maxSize limit pagination numbers shows dot dot dot -->
+
+                            </ngb-pagination>
+                            
+                        </div>
+                         <!-- page size selector -->
+                            <div class="col-md-3 mt-2" style ="text-align:right;" >
+                                <div class="row">
+                        <span class="mr-2" > Page Size</span>
+                            <select (change)="updatePageSize($event.target.value)">
+
+                                <option  >2</option>
+                                <option selected="true"> 10</option>
+                                <option>20</option>
+                                <option>50</option>
+                            </select>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--  pagination end-->
+
+        </div>
+    </div>
+
+</div>

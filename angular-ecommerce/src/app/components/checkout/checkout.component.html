@@ -1,0 +1,366 @@
+<div class="main-content page-m">
+
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+
+            <form [formGroup]="checkoutFormGroup"  (ngSubmit) ="onSubmit()">
+                   
+                <!-- customer form group -->
+
+                    <div formGroupName="customer" class="form-area"  >
+                        <h3> Customer</h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>First Name</label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+
+                                        <input formControlName="firstName" type="text">
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Last Name</label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+
+                                        <input formControlName="lastName" type="text">
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Email</label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+
+                                        <input class="form-control" formControlName="email" type="text">
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                      
+                    </div>
+
+
+
+                    <div formGroupName="shippingAddress" class="form-area"  >
+                        <h3> Shipping Address</h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Country</label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+                                            <select formControlName="country">
+                                                    <option> INDIA</option>
+
+                                            </select>
+                                        
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Street </label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+
+                                        <input formControlName="street" type="text">
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>City</label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+
+                                        <input class="form-control" formControlName="city" type="text">
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>State</label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+
+                                        <select formControl="state">
+
+                                            <option> I dont know</option>
+                                        </select>
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>ZipCode</label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+
+                                        <input class="form-control" formControlName="city" type="text">
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+                        
+                      
+                    </div>
+
+                    
+                    <!-- Checkbox to copy shipping address to billing address -->
+
+                    <div class="input-space">
+<label class="au-checkbox"> </label>
+<input type="checkbox" (change)="copyShippingAddToBillingAdd($event)">
+<span class="checkbox-mark"> Billing Address same as Shipping Address </span>
+                    </div>
+                    <div formGroupName="billingAddress" class="form-area"  >
+                        <h3> Billing Address</h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Country</label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+                                            <select formControlName="country">
+                                                    <option> INDIA</option>
+
+                                            </select>
+                                        
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Street </label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+
+                                        <input formControlName="street" type="text">
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>City</label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+
+                                        <input class="form-control" formControlName="city" type="text">
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>State</label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+
+                                        <select formControl="state">
+
+                                            <option> I dont know</option>
+                                        </select>
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>ZipCode</label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+
+                                        <input class="form-control" formControlName="city" type="text">
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+                        
+                      
+                    </div>
+
+
+
+
+
+                    <div formGroupName="creditCardInformation" class="form-area"  >
+                        <h3> Card Info</h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Card Type</label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+                                            <select formControlName="cardType">
+                                                    <option> VISA</option>
+                                                    
+                                            </select>
+                                        
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Name </label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+
+                                        <input formControlName="nameOnCard" type="text">
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Card Number</label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+
+                                        <input class="form-control" formControlName="cardNumber" type="text">
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Security Code</label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+
+                                       <input type="text" formControlName="securityCode">
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Expire Month</label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+
+                                        <select formControlName="expirationMonth" >
+                                        
+                                            <option value="01">January</option>
+                                            <option value="02">February</option>
+                                            <option value="03">March</option>
+                                            <option value="04">April</option>
+                                            <option value="05">May</option>
+                                            <option value="06">June</option>
+                                            <option value="07">July</option>
+                                            <option value="08">August</option>
+                                            <option value="09">September</option>
+                                            <option value="10">October</option>
+                                            <option value="11">November</option>
+                                            <option value="12">December</option>
+                                    </select>
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Expire Year</label>
+                                <div class=col-md-9>
+
+                                    <div class="input-space">
+
+                                        <select class="form-control" formControlName="expirationYear" >
+                                        
+                                            <option value="2030">2030</option>
+                                            <option value="2029">2029</option>
+                                            <option value="2028">2028</option>
+                                            <option value="2027">2027</option>
+                                            <option value="2026">2026</option>
+                                            <option value="2025">2025</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2020">2020</option>
+                                        </select>
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+
+                    <div class="form-area">
+
+                        <h3> Review Order</h3>
+
+                        <p> Total Quantity: {{totalQuantity}}</p>
+                        <p> Total Price: {{totalPrice}}</p>
+                    </div>
+                    <div class="text-center">
+
+                        <button type="submit"
+                        class="btn btn-info"  [disabled]="!checkoutFormGroup.valid">
+                            Purchase
+                        </button>
+                    </div>
+            </form>
+
+
+
+
+            
+        </div>
+    </div>
+</div>
